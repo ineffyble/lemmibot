@@ -8,6 +8,11 @@ RSpec.describe Lemmibot::Bot do
     expect(bot.direction).to eq(:north)
   end
 
+  it 'starts unplaced' do
+    bot = Lemmibot::Bot.new
+    expect(bot.placed).to eq(false)
+  end
+
   it 'recognises valid directions' do
     bot = Lemmibot::Bot.new
     %i[north south east west].each do |direction|
@@ -106,5 +111,13 @@ RSpec.describe Lemmibot::Bot do
       expect(bot.pos_x).to be < 5
       expect(bot.pos_y).to be < 5
     end
+  end
+
+  it 'can be placed in a valid position' do
+    bot = Lemmibot::Bot.new
+    bot.place(2, 2, :south)
+    expect(bot.placed).to eq(true)
+    expect(bot.pos_x).to eq(2)
+    expect(bot.pos_y).to eq(2)
   end
 end

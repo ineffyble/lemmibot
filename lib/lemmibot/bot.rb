@@ -5,12 +5,14 @@ module Lemmibot
     attr_reader :pos_x
     attr_reader :pos_y
     attr_reader :direction
+    attr_reader :placed
 
     def initialize
       # Set the bot's position when instantiated
       @pos_x = 0
       @pos_y = 0
       @direction = :north
+      @placed = false
     end
 
     def valid_direction?(direction)
@@ -81,6 +83,7 @@ module Lemmibot
       set_position(:x, x)
       set_position(:y, y)
       set_direction(direction)
+      @placed = true
     end
   end
 end
