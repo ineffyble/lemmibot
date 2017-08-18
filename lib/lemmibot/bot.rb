@@ -21,8 +21,9 @@ module Lemmibot
 
     def set_direction(direction)
       # Set the bot to be facing a specified valid direction
-      return unless valid_direction? direction
+      return false unless valid_direction? direction
       @direction = direction
+      true
     end
 
     def valid_position?(position)
@@ -31,12 +32,13 @@ module Lemmibot
 
     def set_position(axis, position)
       # Set the bot to a specified valid position on specified axis
-      return unless valid_position? position
+      return false unless valid_position? position
       if axis == :x
         @pos_x = position
       else
         @pos_y = position
       end
+      true
     end
 
     def change_position(axis, value)
@@ -52,6 +54,7 @@ module Lemmibot
     def turn(relative_direction)
       # Rotate the bot 90 degrees to face another direction
       # TODO: Find a nicer way to find the new direction
+      return false unless @placed
       change = if relative_direction == :left
                  -1
                else
@@ -66,24 +69,22 @@ module Lemmibot
     def move
       # Move the bot one unit in the direction it is facing
       # TODO: Find a more elegant solution for this
+      return false unless @placed
       case @direction
-      when :north
-        change_position(:y, 1)
-      when :south
-        change_position(:y, -1)
-      when :east
-        change_position(:x, 1)
-      when :west
-        change_position(:x, -1)
+      when :north then return change_position(:y, 1)
+      when :south then return change_position(:y, -1)
+      when :east then return change_position(:x, 1)
+      when :west then return change_position(:x, -1)
       end
     end
 
     def place(x, y, direction)
       # Places the bot at a specified position, facing specified direction
-      set_position(:x, x)
-      set_position(:y, y)
-      set_direction(direction)
+      return false unless set_position(:x, x) &&
+                          set_position(:y, y) &&
+                          set_direction(direction)
       @placed = true
+      true
     end
   end
 end
