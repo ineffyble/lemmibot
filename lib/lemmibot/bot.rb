@@ -1,6 +1,7 @@
 module Lemmibot
   # A simulated toy robot
   class Bot
+    VALID_DIRECTIONS = %i[north south east west].freeze
     attr_reader :pos_x
     attr_reader :pos_y
     attr_reader :direction
@@ -12,7 +13,12 @@ module Lemmibot
     end
 
     def valid_direction?(direction)
-      %i[north south east west].include? direction
+      VALID_DIRECTIONS.include? direction
+    end
+
+    def face(direction)
+      return unless valid_direction? direction
+      @direction = direction
     end
   end
 end

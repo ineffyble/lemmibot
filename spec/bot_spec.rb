@@ -21,4 +21,17 @@ RSpec.describe Lemmibot::Bot do
     expect(bot.valid_direction?('northwest')).to eq(false)
     expect(bot.valid_direction?(true)).to eq(false)
   end
+
+  it 'will face north' do
+    bot = Lemmibot::Bot.new
+    bot.face(:east)
+    expect(bot.direction).to eq(:east)
+  end
+
+  it 'will not face southwest' do
+    bot = Lemmibot::Bot.new
+    bot.face(:south)
+    bot.face(:southwest)
+    expect(bot.direction).to eq(:south)
+  end
 end
