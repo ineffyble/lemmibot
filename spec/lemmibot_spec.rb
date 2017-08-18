@@ -5,7 +5,8 @@ RSpec.describe Lemmibot do
     expect(Lemmibot::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "can instantiate a bot" do
+    bot = Lemmibot::Bot.new
+    expect(bot).to be_a(Lemmibot::Bot)
   end
 end
