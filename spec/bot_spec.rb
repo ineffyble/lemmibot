@@ -54,20 +54,48 @@ RSpec.describe Lemmibot::Bot do
     end
   end
 
+  it 'can be placed in a valid position' do
+    bot = Lemmibot::Bot.new
+    bot.place(2, 2, :south)
+    expect(bot.placed).to eq(true)
+    expect(bot.pos_x).to eq(2)
+    expect(bot.pos_y).to eq(2)
+  end
+
+  it 'cannot be placed in an invalid position' do
+    bot = Lemmibot::Bot.new
+    bot.place(5, 2, :south)
+    expect(bot.placed).to eq(false)
+    expect(bot.pos_x).to eq(0)
+    expect(bot.pos_y).to eq(0)
+  end
+
+  it 'will not execute commands until placed' do
+    bot = Lemmibot::Bot.new
+    bot.turn(:left)
+    expect(bot.direction).to eq(:north)
+    bot.move
+    expect(bot.pos_x).to eq(0)
+    expect(bot.pos_y).to eq(0)
+  end
+
   it 'will turn left' do
     bot = Lemmibot::Bot.new
+    bot.place(0, 0, :north)
     bot.turn(:left)
     expect(bot.direction).to eq(:west)
   end
 
   it 'will turn right' do
     bot = Lemmibot::Bot.new
+    bot.place(0, 0, :north)
     bot.turn(:right)
     expect(bot.direction).to eq(:east)
   end
 
   it 'will rotate 360 degrees clockwise' do
     bot = Lemmibot::Bot.new
+    bot.place(0, 0, :north)
     expect(bot.direction).to eq(:north)
     bot.turn(:right)
     expect(bot.direction).to eq(:east)
@@ -81,6 +109,7 @@ RSpec.describe Lemmibot::Bot do
 
   it 'will move to the north east corner, then 2 units west' do
     bot = Lemmibot::Bot.new
+    bot.place(0, 0, :north)
     bot.set_direction(:north)
     4.times do
       bot.move
@@ -101,6 +130,7 @@ RSpec.describe Lemmibot::Bot do
 
   it 'will not fall off in any direction' do
     bot = Lemmibot::Bot.new
+    bot.place(0, 0, :north)
     %i[north south east west].each do |direction|
       bot.set_direction(direction)
       100.times do
@@ -111,13 +141,5 @@ RSpec.describe Lemmibot::Bot do
       expect(bot.pos_x).to be < 5
       expect(bot.pos_y).to be < 5
     end
-  end
-
-  it 'can be placed in a valid position' do
-    bot = Lemmibot::Bot.new
-    bot.place(2, 2, :south)
-    expect(bot.placed).to eq(true)
-    expect(bot.pos_x).to eq(2)
-    expect(bot.pos_y).to eq(2)
   end
 end
