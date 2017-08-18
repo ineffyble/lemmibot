@@ -1,3 +1,6 @@
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
+# Do not prefix writer method names with set_
+Style/AccessorMethodName:
+  Enabled: false
