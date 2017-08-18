@@ -24,14 +24,14 @@ RSpec.describe Lemmibot::Bot do
 
   it 'will face north' do
     bot = Lemmibot::Bot.new
-    bot.face(:east)
+    bot.set_direction(:east)
     expect(bot.direction).to eq(:east)
   end
 
   it 'will not face southwest' do
     bot = Lemmibot::Bot.new
-    bot.face(:south)
-    bot.face(:southwest)
+    bot.set_direction(:south)
+    bot.set_direction(:southwest)
     expect(bot.direction).to eq(:south)
   end
 
@@ -51,17 +51,17 @@ RSpec.describe Lemmibot::Bot do
 
   it 'will move to the north east corner, then 2 units west' do
     bot = Lemmibot::Bot.new
-    bot.face(:north)
+    bot.set_direction(:north)
     4.times do
       bot.move
     end
-    bot.face(:east)
+    bot.set_direction(:east)
     4.times do
       bot.move
     end
     expect(bot.pos_x).to eq(4)
     expect(bot.pos_y).to eq(4)
-    bot.face(:west)
+    bot.set_direction(:west)
     2.times do
       bot.move
     end
@@ -72,7 +72,7 @@ RSpec.describe Lemmibot::Bot do
   it 'will not fall off in any direction' do
     bot = Lemmibot::Bot.new
     %i[north south east west].each do |direction|
-      bot.face(direction)
+      bot.set_direction(direction)
       100.times do
         bot.move
       end
