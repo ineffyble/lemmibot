@@ -1,7 +1,7 @@
 module Lemmibot
   # A simulated toy robot on a table top
   class Bot
-    VALID_DIRECTIONS = %i[north south east west].freeze
+    DIRECTIONS = %i[west north east south].freeze
     attr_reader :pos_x
     attr_reader :pos_y
     attr_reader :direction
@@ -14,7 +14,7 @@ module Lemmibot
     end
 
     def valid_direction?(direction)
-      VALID_DIRECTIONS.include? direction
+      DIRECTIONS.include? direction
     end
 
     def set_direction(direction)
@@ -45,6 +45,22 @@ module Lemmibot
                        @pos_y + value
                      end
       set_position(axis, new_position)
+    end
+
+    def turn(relative_direction)
+      # Rotate the bot 90 degrees to face another direction
+      # TODO: Find a nicer way to find the new direction
+      change = if relative_direction == :left
+                 -1
+               else
+                 1
+               end
+      next_direction_index = DIRECTIONS.index(@direction) + change
+      if next_direction_index > DIRECTIONS.count - 1
+        next_direction_index = 0
+      end
+      new_direction = DIRECTIONS[next_direction_index]
+      set_direction(new_direction)
     end
 
     def move

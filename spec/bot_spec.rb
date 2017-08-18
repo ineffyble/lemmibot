@@ -49,6 +49,31 @@ RSpec.describe Lemmibot::Bot do
     end
   end
 
+  it 'will turn left' do
+    bot = Lemmibot::Bot.new
+    bot.turn(:left)
+    expect(bot.direction).to eq(:west)
+  end
+
+  it 'will turn right' do
+    bot = Lemmibot::Bot.new
+    bot.turn(:right)
+    expect(bot.direction).to eq(:east)
+  end
+
+  it 'will rotate 360 degrees clockwise' do
+    bot = Lemmibot::Bot.new
+    expect(bot.direction).to eq(:north)
+    bot.turn(:right)
+    expect(bot.direction).to eq(:east)
+    bot.turn(:right)
+    expect(bot.direction).to eq(:south)
+    bot.turn(:right)
+    expect(bot.direction).to eq(:west)
+    bot.turn(:right)
+    expect(bot.direction).to eq(:north)
+  end
+
   it 'will move to the north east corner, then 2 units west' do
     bot = Lemmibot::Bot.new
     bot.set_direction(:north)
