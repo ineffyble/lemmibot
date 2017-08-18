@@ -1,5 +1,5 @@
 module Lemmibot
-  # A simulated toy robot
+  # A simulated toy robot on a table top
   class Bot
     VALID_DIRECTIONS = %i[north south east west].freeze
     attr_reader :pos_x
@@ -7,6 +7,7 @@ module Lemmibot
     attr_reader :direction
 
     def initialize
+      # Set the bot's position when instantiated
       @pos_x = 0
       @pos_y = 0
       @direction = :north
@@ -17,6 +18,7 @@ module Lemmibot
     end
 
     def face(direction)
+      # Set the bot to be facing a specified valid direction
       return unless valid_direction? direction
       @direction = direction
     end
@@ -26,6 +28,7 @@ module Lemmibot
     end
 
     def change_position(axis, value)
+      # Alter the bot's position on the table top
       if axis == :x
         new_position = @pos_x + value
         return unless valid_position? new_position
@@ -38,6 +41,7 @@ module Lemmibot
     end
 
     def move
+      # Move the bot one unit in the direction it is facing
       # TODO: Find a more elegant solution for this
       case @direction
       when :north
