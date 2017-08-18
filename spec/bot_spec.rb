@@ -48,4 +48,38 @@ RSpec.describe Lemmibot::Bot do
       expect(bot.valid_position?(position)).to eq(false)
     end
   end
+
+  it 'will move to the north east corner, then 2 units west' do
+    bot = Lemmibot::Bot.new
+    bot.face(:north)
+    4.times do
+      bot.move
+    end
+    bot.face(:east)
+    4.times do
+      bot.move
+    end
+    expect(bot.pos_x).to eq(4)
+    expect(bot.pos_y).to eq(4)
+    bot.face(:west)
+    2.times do
+      bot.move
+    end
+    expect(bot.pos_x).to eq(2)
+    expect(bot.pos_y).to eq(4)
+  end
+
+  it 'will not fall off in any direction' do
+    bot = Lemmibot::Bot.new
+    %i[north south east west].each do |direction|
+      bot.face(direction)
+      100.times do
+        bot.move
+      end
+      expect(bot.pos_x).to be > -1
+      expect(bot.pos_y).to be > -1
+      expect(bot.pos_x).to be < 5
+      expect(bot.pos_y).to be < 5
+    end
+  end
 end
