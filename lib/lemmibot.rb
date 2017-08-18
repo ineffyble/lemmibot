@@ -1,5 +1,5 @@
 require "lemmibot/version"
+require "lemmibot/bot"
 
 module Lemmibot
-  # Your code goes here...
 end
