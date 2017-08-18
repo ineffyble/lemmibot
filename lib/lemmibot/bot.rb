@@ -10,5 +10,9 @@ module Lemmibot
       @pos_y = 0
       @direction = :north
     end
+
+    def valid_direction?(direction)
+      %i[north south east west].include? direction
+    end
   end
 end
