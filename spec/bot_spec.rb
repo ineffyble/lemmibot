@@ -34,4 +34,18 @@ RSpec.describe Lemmibot::Bot do
     bot.face(:southwest)
     expect(bot.direction).to eq(:south)
   end
+
+  it 'recognises valid positions' do
+    bot = Lemmibot::Bot.new
+    (0..4).each do |position|
+      expect(bot.valid_position?(position)).to eq(true)
+    end
+  end
+
+  it 'rejects invalid positions' do
+    bot = Lemmibot::Bot.new
+    [5, 42, -10, -255].each do |position|
+      expect(bot.valid_position?(position)).to eq(false)
+    end
+  end
 end

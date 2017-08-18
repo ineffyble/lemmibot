@@ -20,5 +20,9 @@ module Lemmibot
       return unless valid_direction? direction
       @direction = direction
     end
+
+    def valid_position?(position)
+      position >= 0 && position <= 4
+    end
   end
 end
