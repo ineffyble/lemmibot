@@ -56,9 +56,7 @@ module Lemmibot
                  1
                end
       next_direction_index = DIRECTIONS.index(@direction) + change
-      if next_direction_index > DIRECTIONS.count - 1
-        next_direction_index = 0
-      end
+      next_direction_index = 0 if next_direction_index > DIRECTIONS.count - 1
       new_direction = DIRECTIONS[next_direction_index]
       set_direction(new_direction)
     end
