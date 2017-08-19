@@ -142,4 +142,17 @@ RSpec.describe Lemmibot::Bot do
       expect(bot.pos_y).to be < 5
     end
   end
+
+  it 'will not report until placed' do
+    bot = Lemmibot::Bot.new
+    expect(bot.report).to eq(false)
+  end
+
+  it 'will report location and direction' do
+    bot = Lemmibot::Bot.new
+    bot.place(0, 1, :north)
+    expect(bot.report[:x]).to eq(0)
+    expect(bot.report[:y]).to eq(1)
+    expect(bot.report[:dir]).to eq(:north)
+  end
 end
