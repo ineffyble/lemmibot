@@ -1,4 +1,6 @@
 # Lemmibot
+[![Gem Version](https://badge.fury.io/rb/lemmibot.svg)](https://badge.fury.io/rb/lemmibot) 
+[![Build Status](https://travis-ci.org/ineffyble/lemmibot.svg)](https://travis-ci.org/ineffyble/lemmibot)
 
 A toy robot with better self-preservation instincts than a real lemming.
 
