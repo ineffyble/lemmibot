@@ -10,22 +10,18 @@ module Lemmibot
 
     def turn(relative_direction)
       # Rotate the bot 90 degrees to face another direction
-      # TODO: Find a nicer way to find the new direction
       return false unless @placed
-      change = if relative_direction == :left
-                 -1
-               else
-                 1
-               end
-      next_direction_index = DIRECTIONS.index(@direction) + change
-      next_direction_index = 0 if next_direction_index > DIRECTIONS.count - 1
-      new_direction = DIRECTIONS[next_direction_index]
+      case relative_direction
+      when :left then change = -1
+      when :right then change = 1
+      end
+      current_direction_index = DIRECTIONS.index(@direction)
+      new_direction = DIRECTIONS.rotate(current_direction_index + change).first
       set_direction(new_direction)
     end
 
     def move
       # Move the bot one unit in the direction it is facing
-      # TODO: Find a more elegant solution for this
       return false unless @placed
       case @direction
       when :north then return change_position(:y, 1)
