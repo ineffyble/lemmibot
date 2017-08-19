@@ -8,3 +8,6 @@ Metrics/LineLength:
 # Do not prefix writer method names with set_
 Style/AccessorMethodName:
   Enabled: false
+# Do not suppress exceptions
+Lint/HandleExceptions:
+  Enabled: false

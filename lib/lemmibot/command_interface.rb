@@ -14,7 +14,6 @@ module Lemmibot
           process_command(command.chomp)
         rescue
           # Malformed and failed commands should be ignored
-          return
         end
       end
     end

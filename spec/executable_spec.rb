@@ -48,4 +48,14 @@ RSpec.describe 'Lemmibot executable' do
     stop_all_commands
     expect(last_command_started.output.chomp).to eq('Lemmibot is awaiting your commands')
   end
+
+  it 'will not crash if given a malformed PLACE command' do
+    run './exe/lemmibot'
+    type 'PLACE like,home'
+    type 'PLACE 0,0,NORTH'
+    type 'REPORT'
+
+    stop_all_commands
+    expect(last_command_started.output.split("\n").last).to eq('0,0,NORTH')
+  end
 end
