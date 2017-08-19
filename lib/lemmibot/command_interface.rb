@@ -1,5 +1,6 @@
 module Lemmibot
-  # An interface for issuing commands to a Lemmibot via interactive command-line or piped in scripts
+  # An interface for issuing commands to a Lemmibot
+  # via interactive command-line or piped in scripts
   class CommandInterface
     def initialize
       @bot = Lemmibot::Bot.new
@@ -14,7 +15,7 @@ module Lemmibot
         begin
           process_command(command.chomp)
         rescue
-          # Malformed and failed commands should be ignored, so take no action here
+          # Malformed and failed commands should be ignored, so take no action
         end
       end
     end
@@ -29,8 +30,8 @@ module Lemmibot
       when /LEFT/ then @bot.turn(:left)
       when /RIGHT/ then @bot.turn(:right)
       when /REPORT/ then report
-      # All other commands will be silently ignored
       end
+      # All other commands will be silently ignored
     end
 
     def place_arguments(command)
