@@ -70,7 +70,7 @@ Clone the repository from GitHub:
 
     $ git clone https://github.com/ineffyble/lemmibot.git
 
-Then use the setup script at to install development dependencies.
+Then use the setup script to install development dependencies.
 
     $ cd lemmibot && ./bin/setup
 
