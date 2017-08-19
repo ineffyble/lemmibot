@@ -32,6 +32,19 @@ Any commands that would result in this bot's untimely demise
 (e.g. placing it off the edge of the table, or attempting to move the bot off the edge of the table)
 will be silently ignored.
 
+### Using a command script
+
+Lemmibot can fed a list of commands from a file:
+
+    $ lemmibot < examples/basic_move
+
+The following scripts may be found in the `examples` directory:
+
+* `basic_move` - Demonstrates moving Lemmibot one unit and reporting. The output should be `0,1,NORTH`.
+* `basic_rotate` - Demonstrates rotating Lemmibot 90 degrees left and reporting. The output should be `0,0,WEST`.
+* `move_and_rotate` - Demonstrates moving and rotating Lemmibot, then reporting. The output should be `3,3,NORTH`.
+* `self_preservation` - Demonstrates that Lemmibot will not jump off the table. The output should be `2,4,EAST`.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ineffyble/lemmibot.
