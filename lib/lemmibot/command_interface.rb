@@ -14,7 +14,10 @@ module Lemmibot
       end
     end
 
+    private
+
     def process_command(command)
+      # Process a command string
       case command.upcase
       when /PLACE/
         args = place_arguments(command)
@@ -26,8 +29,8 @@ module Lemmibot
       end
     end
 
-    # Parses arguments for a PLACE command and returns them as a hash
     def place_arguments(command)
+      # Parse arguments for a PLACE command and return them as a hash
       params_string = command.split(' ')[1]
       params = params_string.split(',')
       {
@@ -37,8 +40,8 @@ module Lemmibot
       }
     end
 
-    # Outputs a report of the bot's current position and direction
     def report
+      # Output a report of the bot's current position and direction
       report = @bot.report
       return unless report
       puts "#{report[:x]},#{report[:y]},#{report[:dir].upcase}"
