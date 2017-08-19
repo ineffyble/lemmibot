@@ -36,7 +36,7 @@ module Lemmibot
     end
 
     def place(x, y, direction)
-      # Places the bot at a specified position, facing specified direction
+      # Place the bot at a specified position, facing specified direction
       return false unless set_position(:x, x) &&
                           set_position(:y, y) &&
                           set_direction(direction)
@@ -45,7 +45,7 @@ module Lemmibot
     end
 
     def report
-      # Returns a hash of the bot's current location and direction
+      # Return a hash of the bot's current location and direction
       return false unless @placed
       {
         x: @pos_x,
