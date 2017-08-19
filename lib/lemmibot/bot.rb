@@ -1,5 +1,5 @@
 module Lemmibot
-  # A simulated toy robot on a tabletop
+  # A simulated toy robot, which can be placed on a tabletop and given commands
   class Bot
     def initialize
       @pos_x = 0

@@ -1,11 +1,12 @@
 module Lemmibot
-  # An interface for issuing commands to a Lemmibot via CLI/STDIN
+  # An interface for issuing commands to a Lemmibot via interactive command-line or piped in scripts
   class CommandInterface
     def initialize
       @bot = Lemmibot::Bot.new
     end
 
     def start
+      # Start a session, receiving and processing commands from standard input
       puts 'Lemmibot is awaiting your commands'
       loop do
         command = gets
@@ -13,7 +14,7 @@ module Lemmibot
         begin
           process_command(command.chomp)
         rescue
-          # Malformed and failed commands should be ignored
+          # Malformed and failed commands should be ignored, so take no action here
         end
       end
     end
@@ -28,6 +29,7 @@ module Lemmibot
       when /LEFT/ then @bot.turn(:left)
       when /RIGHT/ then @bot.turn(:right)
       when /REPORT/ then report
+      # All other commands will be silently ignored
       end
     end
 

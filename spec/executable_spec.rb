@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe 'Lemmibot executable' do
+  # Tests of the lemmibot interactive executable utilising aruba
   it 'shows a ready message' do
     run './exe/lemmibot'
 

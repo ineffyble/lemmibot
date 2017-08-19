@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Lemmibot::Bot do
+  # Tests the public functions of the Bot class
   it 'will not report until placed' do
     bot = Lemmibot::Bot.new
     expect(bot.report).to eq(false)
@@ -110,6 +111,8 @@ RSpec.describe Lemmibot::Bot do
   end
 
   it 'will not fall off in any direction' do
+    # Attempt to move the bot too far in every direction,
+    # ensure reported coordinates never exceed bounds of the tabletop
     bot = Lemmibot::Bot.new
     bot.place(0, 0, :north)
     4.times do
