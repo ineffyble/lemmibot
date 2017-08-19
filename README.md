@@ -10,6 +10,11 @@ Install the gem from [RubyGems](https://rubygems.org/):
 
     $ gem install lemmibot
 
+### Compatibility
+
+Lemmibot is continuously tested against the latest minor versions of Ruby 2.0 onwards,
+and should run on any system running `ruby >= 2.0.0`.
+
 ## Usage
 
 Once installed, start an interactive bot interface:
