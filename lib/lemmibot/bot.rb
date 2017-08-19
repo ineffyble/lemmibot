@@ -86,5 +86,15 @@ module Lemmibot
       @placed = true
       true
     end
+
+    def report
+      # Returns a hash of the bot's current location and direction
+      return false unless @placed
+      {
+        x: @pos_x,
+        y: @pos_y,
+        dir: @direction
+      }
+    end
   end
 end
