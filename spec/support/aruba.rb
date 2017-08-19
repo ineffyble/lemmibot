@@ -1,7 +1,7 @@
-require "aruba/api"
+require 'aruba/api'
 
 Aruba.configure do |config|
-  config.exit_timeout = 5
+  config.exit_timeout = 1
 end
 
 RSpec.configure do |config|
