@@ -1,6 +1,6 @@
 # Lemmibot
 
-A toy robot simulator with more self-preservation instincts than a real lemming.
+A toy robot with better self-preservation instincts than a real lemming.
 
 ## Installation
 

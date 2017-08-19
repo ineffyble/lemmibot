@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Effy Elden']
   spec.email         = ['git@effy.is']
 
-  spec.summary       = 'A toy robot simulator'
+  spec.summary       = 'A toy robot with better self-preservation instincts than a lemming'
   spec.homepage      = 'https://github.com/ineffyble/lemmibot'
   spec.license       = 'MIT'
 
