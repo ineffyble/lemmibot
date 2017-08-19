@@ -9,4 +9,9 @@ RSpec.describe Lemmibot do
     bot = Lemmibot::Bot.new
     expect(bot).to be_a(Lemmibot::Bot)
   end
+
+  it 'has a command line interface' do
+    cli = Lemmibot::CommandInterface.new
+    expect(cli).to be_a(Lemmibot::CommandInterface)
+  end
 end
