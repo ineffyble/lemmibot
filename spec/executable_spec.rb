@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Lemmibot::CommandInterface do
+RSpec.describe 'Lemmibot executable' do
   it 'shows a ready message' do
     run './exe/lemmibot'
 
