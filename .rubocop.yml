@@ -1,3 +1,4 @@
+# Exclude spec files from some Rubocop metric
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
@@ -5,9 +6,9 @@ Metrics/LineLength:
   Exclude:
     - 'spec/**/*.rb'
     - 'lemmibot.gemspec'
-# Do not prefix writer method names with set_
+# Allow prefixing writer method names with set_
 Style/AccessorMethodName:
   Enabled: false
-# Do not suppress exceptions
+# Allow silently suppressing exceptions
 Lint/HandleExceptions:
   Enabled: false
