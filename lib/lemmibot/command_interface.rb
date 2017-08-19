@@ -25,11 +25,11 @@ module Lemmibot
     def process_command(command)
       # Process a command string
       case command.upcase
-      when /PLACE/ then place(command)
-      when /MOVE/ then @bot.move
-      when /LEFT/ then @bot.turn(:left)
-      when /RIGHT/ then @bot.turn(:right)
-      when /REPORT/ then report
+      when /^PLACE / then place(command)
+      when 'MOVE' then @bot.move
+      when 'LEFT' then @bot.turn(:left)
+      when 'RIGHT' then @bot.turn(:right)
+      when 'REPORT' then report
       end
       # All other commands will be silently ignored
     end
