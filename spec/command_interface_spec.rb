@@ -40,4 +40,12 @@ RSpec.describe Lemmibot::CommandInterface do
     stop_all_commands
     expect(last_command_started.output.split("\n").last).to eq('3,3,NORTH')
   end
+
+  it 'will not report before being placed' do
+    run './exe/lemmibot'
+    type 'REPORT'
+
+    stop_all_commands
+    expect(last_command_started.output.chomp).to eq('Lemmibot is awaiting your commands')
+  end
 end

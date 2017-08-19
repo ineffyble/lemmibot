@@ -39,6 +39,7 @@ module Lemmibot
 
     # Outputs a report of the bot's current position and direction
     def report
+      return unless @bot.placed
       puts "#{@bot.pos_x},#{@bot.pos_y},#{@bot.direction.upcase}"
     end
   end
