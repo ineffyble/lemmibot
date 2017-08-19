@@ -10,7 +10,12 @@ module Lemmibot
       loop do
         command = gets
         return unless command
-        process_command(command.chomp)
+        begin
+          process_command(command.chomp)
+        rescue
+          # Malformed and failed commands should be ignored
+          return
+        end
       end
     end
 
@@ -19,9 +24,7 @@ module Lemmibot
     def process_command(command)
       # Process a command string
       case command.upcase
-      when /PLACE/
-        args = place_arguments(command)
-        @bot.place(args[:x], args[:y], args[:dir])
+      when /PLACE/ then place(command)
       when /MOVE/ then @bot.move
       when /LEFT/ then @bot.turn(:left)
       when /RIGHT/ then @bot.turn(:right)
@@ -38,6 +41,11 @@ module Lemmibot
         y: params[1].to_i,
         dir: params[2].downcase.to_sym
       }
+    end
+
+    def place(command)
+      args = place_arguments(command)
+      @bot.place(args[:x], args[:y], args[:dir])
     end
 
     def report
