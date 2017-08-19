@@ -45,6 +45,14 @@ The following scripts may be found in the `examples` directory:
 * `move_and_rotate` - Demonstrates moving and rotating Lemmibot, then reporting. The output should be `3,3,NORTH`.
 * `self_preservation` - Demonstrates that Lemmibot will not jump off the table. The output should be `2,4,EAST`.
 
+## Development
+
+Lemmibot uses `rake`, `rspec`, `aruba`, and `rubocop` for development and testing.
+
+After cloning the repository, you may use the setup script at `./bin/setup` to install development dependencies.
+
+To run the RSpec test suite and Rubocop style checker against Lemmibot, run `bundle exec rake`.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ineffyble/lemmibot.
